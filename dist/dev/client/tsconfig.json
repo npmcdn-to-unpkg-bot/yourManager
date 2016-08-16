@@ -10,7 +10,12 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "exclude":[
+  "exclude": [
     "node_modules"
+  ],
+  "filesGlob": [
+    "client/app/**/*.ts",
+    "typings/*.d.ts"
   ]
 }
+

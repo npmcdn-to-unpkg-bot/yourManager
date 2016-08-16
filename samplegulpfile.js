@@ -255,10 +255,10 @@ gulp.task('build.assets.prod', [
     return gulp.src(['./app/**/*.html', './app/**/*.css'])
         .pipe(filterHTML)
         .pipe(minifyHTML(HTMLMinifierOpts))
-        .pipe(filterHTML.restore())
+        //.pipe(filterHTML.restore())
         .pipe(filterCSS)
         .pipe(minifyCSS())
-        .pipe(filterCSS.restore())
+        //.pipe(filterCSS.restore())
         .pipe(gulp.dest(PATH.dest.prod.all));
 });
 
