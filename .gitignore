@@ -1,5 +1,16 @@
 node_modules
-client/bower_components
 .idea
 /server/config/local.env.js
 npm-debug.log
+gulpfile.js
+gulpfiletemp.js
+gulpfile1.js
+gulp.config.js
+samplegulpfile.js
+client
+server
+dist/prod
+typings
+.yo-rc.json
+karma.conf.js
+tslint.json
