@@ -14,8 +14,8 @@ import { HeaderComponent } from '../shared/header/header.component';
 @Component({
     moduleId:module.id,
     selector: 'ym-admin',
-    template:'<ym-header-shared></ym-header-shared><div class="container" style="padding-top: 70px;"><div class="title"></div><div class="panel-body" style="overflow-x:auto;"><table *ngIf="allocatedAssetsList"><tr><th>EmployeeId</th><th>Employee Name</th><th>Device Name</th><th>Model Number</th><th>Service Tag</th><th>Device Code</th><th>Serial Number</th><th>Date Of Issue</th><th>Warranty Period</th><th>specification</th><th>shipping Date</th><th>Purchase Date</th><th>Warranty End Date</th><th>Last Maintenance Date</th></tr><tr *ngFor="let asset of allocatedAssetsList"><td>{{asset.empId}}</td><td>{{asset.empName}}</td><td>{{asset.deviceName}}</td><td>{{asset.modelNo}}</td><td>{{asset.serviceTag}}</td><td>{{asset.deviceCode}}</td><td>{{asset.serialNo}}</td><td>{{asset.DOI}}</td><td>{{asset.warrantyPeriod}}</td><td>{{asset.specs}}</td><td>{{asset.shippingDate}}</td><td>{{asset.purchaseDate}}</td><td>{{asset.warrantyEndDate}}</td><td>{{asset.lastMaintenanceDate}}</td></tr></table></div></div>',
-    styles: [`td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px; }tr:nth-child(even) {  background-color: #dddddd; }table {  border-collapse: collapse;  border-spacing: 0;  width: 100%;  border: 1px solid #ddd; }`],
+    templateUrl: 'admin.component.html',
+    styleUrls:['admin.component.css'],
     providers:[AdminService],
     directives:[HeaderComponent]
 })
