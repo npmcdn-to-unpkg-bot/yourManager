@@ -47,7 +47,7 @@ var DashboardComponent = (function () {
             moduleId: module.id,
             selector: 'ym-dashboard',
             providers: [dashboard_service_1.SearchService],
-            templateUrl: 'dashboard.component.html',
+            template: '<ym-header-shared></ym-header-shared><div class="container" style="padding-top: 70px;"><form (ngSubmit)="onSubmit()" class="col-lg-6"><div class="form-group"><input type="text" class="form-control" style="width:25%;" required [(ngModel)]="search.value" name="search" placeholder="Search.."></div><button type="submit" class="btn btn-default">Submit</button> <button type="button" class="btn btn-default" (click)="listAllAssets()">List All Assets</button></form><div class="col-sm-6"><img [src]="fullpath"></div></div>',
             directives: [router_1.ROUTER_DIRECTIVES, header_component_1.HeaderComponent]
         }), 
         __metadata('design:paramtypes', [dashboard_service_1.SearchService, router_1.Router, router_1.ActivatedRoute])

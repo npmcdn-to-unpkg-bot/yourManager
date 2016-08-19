@@ -22,7 +22,7 @@ var HomeComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'ym-home',
-            templateUrl: 'home.component.html',
+            template: '<ym-header-shared></ym-header-shared><div class="container" style="padding-top: 70px;"><div class="content"><span><h1>Welcome to Your manager Application...</h1><p>This application is basically the assets management system. Which manages you\'re assets automatically. Thanxx...</p></span><br></div></div><div><img style="width:100%; height:60%" [src]="fullpath"></div>',
             directives: [router_1.ROUTER_DIRECTIVES, header_component_1.HeaderComponent]
         }), 
         __metadata('design:paramtypes', [router_1.Router])

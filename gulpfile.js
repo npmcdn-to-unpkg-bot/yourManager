@@ -8,6 +8,8 @@ var tsify = require("tsify");
 var jsuglify = require("gulp-uglifyjs");
 var jsminify = require("gulp-minify");
 var minifyHtml = require("gulp-minify-html");
+var ng2Inline = require('angular2-inline-template-style');
+var embedSass = require('gulp-angular2-embed-sass');
 var concat = require("gulp-concat");
 var nodemon = require("nodemon");
 var tslint = require('gulp-tslint');
@@ -76,7 +78,6 @@ gulp.task('clean-source-junk', function (done) {
 gulp.task('ts-compile', function () {
     return gulp
         .src(['client/app/**/*.ts', 'typings/**/*.d.ts'])
-
         .pipe(sourceMaps.init())
         .pipe(tsc(tsConfig))
         .pipe(sourceMaps.write('.'))
@@ -96,12 +97,10 @@ gulp.task('prod-ts-compile', function (done) {
 });
 
 
-gulp.task('prod-inline-compile', function (done) {
+gulp.task('ts-inline-html', function (done) {
     return gulp.src('client/app/**/*.ts', {base: 'client/app/'})
-        .pipe(embedTemplates()) // inline templates
-        //.pipe(tsc(tsConfig));
+        .pipe(embedTemplates())
         .pipe(gulp.dest('client/app'));
-
 });
 
 
@@ -152,11 +151,8 @@ gulp.task("copy-html", function () {
         .pipe(gulp.dest('dist/dev/client/app'));
 });
 gulp.task('build-prod-css', function () {
-    gulp.src('client/app/**/*.css')
-        .pipe(cssmin())
-        .pipe(concat('style.css'))
-        //.pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(rename({suffix: '.min'}))
+    gulp.src('client/app/**/*.ts')
+        .pipe(embedSass())
         .pipe(gulp.dest('dist/prod/client/app'));
 });
 
