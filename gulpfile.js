@@ -97,9 +97,10 @@ gulp.task('prod-ts-compile', function (done) {
 });
 
 
-gulp.task('ts-inline-html', function (done) {
+gulp.task('ts-inline-html-css', function (done) {
     return gulp.src('client/app/**/*.ts', {base: 'client/app/'})
-        .pipe(embedTemplates())
+        //.pipe(embedTemplates())
+        .pipe(embedSass())
         .pipe(gulp.dest('client/app'));
 });
 
@@ -153,7 +154,7 @@ gulp.task("copy-html", function () {
 gulp.task('build-prod-css', function () {
     gulp.src('client/app/**/*.ts')
         .pipe(embedSass())
-        .pipe(gulp.dest('dist/prod/client/app'));
+        .pipe(gulp.dest('dist/temp/client/app'));
 });
 
 

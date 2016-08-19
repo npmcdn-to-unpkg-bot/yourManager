@@ -31,7 +31,7 @@ var HeaderComponent = (function () {
             selector: 'ym-header-shared',
             template: '<nav class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><a class="navbar-brand" href="#">Your Manager</a></div><ul class="nav navbar-nav pull-right" *ngIf="show"><li><a routerLink="/home" routerLinkActive="active">Home</a></li><li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li><li><a (click)="logout()">logout</a></li></ul></div></nav>',
             directives: [router_1.ROUTER_DIRECTIVES],
-            styleUrls: ['header.css']
+            styles: [""]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], HeaderComponent);
