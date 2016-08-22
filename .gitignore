@@ -16,3 +16,4 @@ tslint.json
 package.json
 .travis.yml
 typings.json
+bower.json
