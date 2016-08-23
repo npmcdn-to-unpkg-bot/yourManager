@@ -3,7 +3,7 @@ import { Router,ROUTER_DIRECTIVES } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
 
 @Component({
-    moduleId:module.id,
+    //moduleId:module.id,
     selector: 'ym-home',
     templateUrl:'home.component.html',
     directives:[ROUTER_DIRECTIVES, HeaderComponent]

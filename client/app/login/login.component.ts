@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
 
 @Component({
-    moduleId:module.id,
+    //moduleId:module.id,
     selector: 'ym-login',
     templateUrl: 'login.component.html',
     styleUrls:['login.component.css'],

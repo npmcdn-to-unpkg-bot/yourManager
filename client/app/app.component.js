@@ -7,22 +7,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var login_component_1 = require('./login/login.component');
-var router_1 = require('@angular/router');
+import { Component, Injectable } from '@angular/core';
+import { LoginComponent } from './login/login.component';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
-        core_1.Component({
+        Component({
             selector: 'my-app',
             template: "\n     <router-outlet></router-outlet>\n    ",
-            directives: [login_component_1.LoginComponent, router_1.ROUTER_DIRECTIVES]
+            directives: [LoginComponent, ROUTER_DIRECTIVES]
         }),
-        core_1.Injectable(), 
+        Injectable(), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 })();
-exports.AppComponent = AppComponent;
+AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

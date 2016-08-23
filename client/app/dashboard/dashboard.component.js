@@ -7,16 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var dashboard_service_1 = require('./dashboard.service');
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/catch');
-require('rxjs/add/operator/debounceTime');
-require('rxjs/add/operator/distinctUntilChanged');
-require('rxjs/add/operator/switchMap');
-require('rxjs/add/operator/toPromise');
-var router_1 = require('@angular/router');
-var header_component_1 = require('../shared/header/header.component');
+import { Component } from '@angular/core';
+import { SearchService } from './dashboard.service';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
+import { Router, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
+import { HeaderComponent } from '../shared/header/header.component';
 //import {LoginService} from '.././login/login.service'
 var DashboardComponent = (function () {
     function DashboardComponent(searchService, router, route) {
@@ -42,16 +42,16 @@ var DashboardComponent = (function () {
         //    error =>  this.errorMessage = <any>error);
     };
     DashboardComponent = __decorate([
-        core_1.Component({
+        Component({
             moduleId: module.id,
             selector: 'ym-dashboard',
-            providers: [dashboard_service_1.SearchService],
+            providers: [SearchService],
             templateUrl: 'dashboard.component.html',
-            directives: [router_1.ROUTER_DIRECTIVES, header_component_1.HeaderComponent]
+            directives: [ROUTER_DIRECTIVES, HeaderComponent]
         }), 
-        __metadata('design:paramtypes', [dashboard_service_1.SearchService, router_1.Router, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [SearchService, Router, ActivatedRoute])
     ], DashboardComponent);
     return DashboardComponent;
 })();
-exports.DashboardComponent = DashboardComponent;
+DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.component.js.map

@@ -1,8 +1,8 @@
-var dashboard_component_1 = require('./dashboard.component');
-exports.DashboardRoutes = [
+import { DashboardComponent } from './dashboard.component';
+export var DashboardRoutes = [
     {
         path: 'dashboard',
-        component: dashboard_component_1.DashboardComponent
+        component: DashboardComponent
     },
 ];
 //# sourceMappingURL=dashboard.route.js.map

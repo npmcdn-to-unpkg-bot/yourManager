@@ -7,11 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var user_1 = require('.././user/user');
-var login_service_1 = require('./login.service');
-var router_1 = require('@angular/router');
-var header_component_1 = require('../shared/header/header.component');
+import { Component, Input } from '@angular/core';
+import { User } from '.././user/user';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+import { HeaderComponent } from '../shared/header/header.component';
 var LoginComponent = (function () {
     function LoginComponent(loginService, router) {
         this.loginService = loginService;
@@ -29,21 +29,21 @@ var LoginComponent = (function () {
         }
     };
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', user_1.User)
+        Input(), 
+        __metadata('design:type', User)
     ], LoginComponent.prototype, "selectedUser", void 0);
     LoginComponent = __decorate([
-        core_1.Component({
+        Component({
             moduleId: module.id,
             selector: 'ym-login',
             templateUrl: 'login.component.html',
             styleUrls: ['login.component.css'],
-            providers: [login_service_1.LoginService],
-            directives: [header_component_1.HeaderComponent]
+            providers: [LoginService],
+            directives: [HeaderComponent]
         }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
+        __metadata('design:paramtypes', [LoginService, Router])
     ], LoginComponent);
     return LoginComponent;
 })();
-exports.LoginComponent = LoginComponent;
+LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+import { Injectable } from '@angular/core';
 var USERS = [
     {
         email: 'sumit@knoldus.com',
@@ -19,24 +18,20 @@ var USERS = [
         password: '11'
     }
 ];
-var LoginService = (function () {
-    function LoginService() {
-    }
-    LoginService.prototype.login = function (user) {
-        var authenticatedUser = USERS.find(function (u) { return u.email === user.email; });
+export let LoginService = class LoginService {
+    login(user) {
+        var authenticatedUser = USERS.find(u => u.email === user.email);
         if (authenticatedUser && authenticatedUser.password === user.password) {
             localStorage.setItem('user', JSON.stringify(authenticatedUser));
             return true;
         }
         return false;
-    };
-    LoginService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], LoginService);
-    return LoginService;
-}());
-exports.LoginService = LoginService;
+    }
+};
+LoginService = __decorate([
+    Injectable(), 
+    __metadata('design:paramtypes', [])
+], LoginService);
 //import {Injectable} from '@angular/core';
 //import {Router} from '@angular/router';
 //import {User} from '.././user/user'

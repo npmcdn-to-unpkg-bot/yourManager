@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,25 +7,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var header_component_1 = require('../shared/header/header.component');
-var HomeComponent = (function () {
-    function HomeComponent(router) {
+import { Component } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { HeaderComponent } from '../shared/header/header.component';
+export let HomeComponent = class HomeComponent {
+    constructor(router) {
         this.router = router;
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.fullpath = 'assets/images/your.jpg';
-    };
-    HomeComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'ym-home',
-            template: '<ym-header-shared></ym-header-shared><div class="container" style="padding-top: 70px;"><div class="content"><span><h1>Welcome to Your manager Application...</h1><p>This application is basically the assets management system. Which manages you\'re assets automatically. Thanxx...</p></span><br></div></div><div><img style="width:100%; height:60%" [src]="fullpath"></div>',
-            directives: [router_1.ROUTER_DIRECTIVES, header_component_1.HeaderComponent]
-        }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], HomeComponent);
-    return HomeComponent;
-}());
-exports.HomeComponent = HomeComponent;
+    }
+};
+HomeComponent = __decorate([
+    Component({
+        //moduleId:module.id,
+        selector: 'ym-home',
+        template: '<ym-header-shared></ym-header-shared><div class="container" style="padding-top: 70px;"><div class="content"><span><h1>Welcome to Your manager Application...</h1><p>This application is basically the assets management system. Which manages you\'re assets automatically. Thanxx...</p></span><br></div></div><div><img style="width:100%; height:60%" [src]="fullpath"></div>',
+        directives: [ROUTER_DIRECTIVES, HeaderComponent]
+    }), 
+    __metadata('design:paramtypes', [Router])
+], HomeComponent);

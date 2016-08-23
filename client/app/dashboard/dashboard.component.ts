@@ -12,7 +12,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 //import {LoginService} from '.././login/login.service'
 
 @Component({
-    moduleId:module.id,
+    //moduleId:module.id,
     selector: 'ym-dashboard',
     providers: [SearchService],
     templateUrl:'dashboard.component.html',

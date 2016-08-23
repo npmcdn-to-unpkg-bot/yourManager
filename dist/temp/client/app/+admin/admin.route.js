@@ -1,8 +1,7 @@
-"use strict";
-var admin_component_1 = require('./admin.component');
-exports.AdminRoutes = [
+import { AdminComponent } from './admin.component';
+export const AdminRoutes = [
     {
         path: 'admin/:id',
-        component: admin_component_1.AdminComponent
+        component: AdminComponent
     },
 ];

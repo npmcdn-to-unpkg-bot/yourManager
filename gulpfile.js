@@ -118,15 +118,9 @@ gulp.task('ts-compile', function () {
 
 gulp.task('bundle-app',function (done) {
 
-    return gulp.src('dist/temp/client/app/boot.js')
-        .pipe(browserify({
-            insertGlobals: true,
-            debug: true,
-            mangle:true,
-            compress:true
-        }))
-        .pipe(concat('bundle.js'))
-        .pipe(jsminify())
+    return gulp.src('dist/prod/client/app/*.js')
+        //.pipe(concat('bundle.js'))
+        //.pipe(jsminify())
         .pipe(jsuglify())
         //.pipe(gzip())
         .pipe(gulp.dest('dist/prod/client/app'));
@@ -155,42 +149,34 @@ gulp.task('index-dev', function () {
         .pipe(gulp.dest('dist/prod/client'));
 });
 
-//gulp.task('source', function () {
-//    return gulp.src("client/index.html")
-//        .pipe(inject(lib_dev)) // only local sources
-//        .pipe(cdnizer([
-//            {
-//                package: 'shim',
-//                file: lib_dev[0],
-//                cdn: 'https://npmcdn.com/core-js/client/shim.min.js'
-//            }
-//        ]))
-//            .pipe(dest("dist/prod/client/"))
-//});
 
-//gulp.task('index-prod', function () {
-//    var target = gulp.src('client/index.html');
-//    // It's not necessary to read the files (will speed up things), we're only after their paths:
-//    var sources = gulp.src([
-//        "https://npmcdn.com/core-js/client/shim.min.js",
-//        'https://npmcdn.com/zone.js@0.6.12?main=browser',
-//        'https://npmcdn.com/reflect-metadata@0.1.3',
-//        'https://npmcdn.com/systemjs@0.19.27/dist/system.src.js',
-//        'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js',
-//        'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
-//
-//    ], {read: false});
-//
-//    return target.pipe(inject(sources))
-//        .pipe(gulp.dest('dist/prod/client'));
-//});
+gulp.task('rollup', function() {
+    //return rollup({
+    //    entry: 'dist/temp/client/app/boot.js'
+    //})
+    return rollup('rollup.config.js')
+    // give the file the name you want to output with.
+        .pipe(source('app.js'))
+
+        // and output to ./dist/app.js as normal.
+        .pipe(gulp.dest('dist/prod/client/app'));
+});
+
+gulp.task('es5-compile', function () {
+    return gulp
+        .src(['dist/prod/client/app/app.js'])
+        .pipe(tsc(tsConfig))
+        .pipe(concat('app.es5.js'))
+        .pipe(gulp.dest('dist/prod/client/app'));
+});
+
 
 gulp.task('build-prod',function(done) {
     runSequence(
         'prep-env',
         'inline-html-css',
         'ts-compile',
-        'bundle-app',
+      //  'bundle-app',
         ['copy-rootfiles', 'minify-images', 'copy-server' ,'copy-components'],
         'start-server',
         done);

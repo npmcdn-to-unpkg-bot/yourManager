@@ -1,8 +1,7 @@
-"use strict";
-var dashboard_component_1 = require('./dashboard.component');
-exports.DashboardRoutes = [
+import { DashboardComponent } from './dashboard.component';
+export const DashboardRoutes = [
     {
         path: 'dashboard',
-        component: dashboard_component_1.DashboardComponent
+        component: DashboardComponent
     },
 ];

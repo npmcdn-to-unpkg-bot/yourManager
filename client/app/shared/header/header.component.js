@@ -7,8 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
+import { Component } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 var HeaderComponent = (function () {
     function HeaderComponent(router) {
         this.router = router;
@@ -26,16 +26,16 @@ var HeaderComponent = (function () {
         this.router.navigate(['/login']);
     };
     HeaderComponent = __decorate([
-        core_1.Component({
+        Component({
             moduleId: module.id,
             selector: 'ym-header-shared',
             templateUrl: 'header.component.html',
-            directives: [router_1.ROUTER_DIRECTIVES],
+            directives: [ROUTER_DIRECTIVES],
             styleUrls: ['header.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [Router])
     ], HeaderComponent);
     return HeaderComponent;
 })();
-exports.HeaderComponent = HeaderComponent;
+HeaderComponent = HeaderComponent;
 //# sourceMappingURL=header.component.js.map

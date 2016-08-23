@@ -7,15 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var Observable_1 = require('rxjs/Observable');
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/catch');
-require('rxjs/add/operator/debounceTime');
-require('rxjs/add/operator/distinctUntilChanged');
-require('rxjs/add/operator/switchMap');
-require('rxjs/add/operator/toPromise');
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
 var SearchService = (function () {
     function SearchService(http) {
         this.http = http;
@@ -40,13 +40,13 @@ var SearchService = (function () {
         var errMsg = (error.message) ? error.message :
             error.status ? error.status + " - " + error.statusText : 'Server error';
         console.error(errMsg); // log to console instead
-        return Observable_1.Observable.throw(errMsg);
+        return Observable.throw(errMsg);
     };
     SearchService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        Injectable(), 
+        __metadata('design:paramtypes', [Http])
     ], SearchService);
     return SearchService;
 })();
-exports.SearchService = SearchService;
+SearchService = SearchService;
 //# sourceMappingURL=dashboard.service.js.map

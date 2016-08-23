@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,34 +7,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var HeaderComponent = (function () {
-    function HeaderComponent(router) {
+import { Component } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+export let HeaderComponent = class HeaderComponent {
+    constructor(router) {
         this.router = router;
         this.show = true;
     }
     ;
-    HeaderComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         if (localStorage.getItem('user') === null) {
             this.show = false;
             this.router.navigate(['/login']);
         }
-    };
-    HeaderComponent.prototype.logout = function () {
+    }
+    logout() {
         localStorage.removeItem('user');
         this.router.navigate(['/login']);
-    };
-    HeaderComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'ym-header-shared',
-            template: '<nav class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><a class="navbar-brand" href="#">Your Manager</a></div><ul class="nav navbar-nav pull-right" *ngIf="show"><li><a routerLink="/home" routerLinkActive="active">Home</a></li><li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li><li><a (click)="logout()">logout</a></li></ul></div></nav>',
-            directives: [router_1.ROUTER_DIRECTIVES],
-            styles: [""]
-        }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], HeaderComponent);
-    return HeaderComponent;
-}());
-exports.HeaderComponent = HeaderComponent;
+    }
+};
+HeaderComponent = __decorate([
+    Component({
+        //moduleId:module.id,
+        selector: 'ym-header-shared',
+        template: '<nav class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><a class="navbar-brand" href="#">Your Manager</a></div><ul class="nav navbar-nav pull-right" *ngIf="show"><li><a routerLink="/home" routerLinkActive="active">Home</a></li><li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li><li><a (click)="logout()">logout</a></li></ul></div></nav>',
+        directives: [ROUTER_DIRECTIVES],
+        styles: [``]
+    }), 
+    __metadata('design:paramtypes', [Router])
+], HeaderComponent);

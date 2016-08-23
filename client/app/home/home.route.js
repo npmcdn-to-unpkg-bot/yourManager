@@ -1,8 +1,8 @@
-var home_component_1 = require('./home.component');
-exports.HomeRoutes = [
+import { HomeComponent } from './home.component';
+export var HomeRoutes = [
     {
         path: 'home',
-        component: home_component_1.HomeComponent
+        component: HomeComponent
     },
 ];
 //# sourceMappingURL=home.route.js.map

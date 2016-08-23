@@ -3,5 +3,5 @@ var User = (function () {
     }
     return User;
 })();
-exports.User = User;
+User = User;
 //# sourceMappingURL=user.js.map

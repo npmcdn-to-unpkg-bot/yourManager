@@ -7,16 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var admin_service_1 = require('./admin.service');
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/catch');
-require('rxjs/add/operator/debounceTime');
-require('rxjs/add/operator/distinctUntilChanged');
-require('rxjs/add/operator/switchMap');
-require('rxjs/add/operator/toPromise');
-var router_1 = require('@angular/router');
-var header_component_1 = require('../shared/header/header.component');
+import { Component, Input } from '@angular/core';
+import { AdminService } from './admin.service';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HeaderComponent } from '../shared/header/header.component';
 var AdminComponent = (function () {
     function AdminComponent(adminService, router, route) {
         this.adminService = adminService;
@@ -44,21 +44,21 @@ var AdminComponent = (function () {
         this.sub.unsubscribe();
     };
     __decorate([
-        core_1.Input(), 
+        Input(), 
         __metadata('design:type', Array)
     ], AdminComponent.prototype, "allocatedAssetsList", void 0);
     AdminComponent = __decorate([
-        core_1.Component({
+        Component({
             moduleId: module.id,
             selector: 'ym-admin',
             templateUrl: 'admin.component.html',
             styleUrls: ['admin.component.css'],
-            providers: [admin_service_1.AdminService],
-            directives: [header_component_1.HeaderComponent]
+            providers: [AdminService],
+            directives: [HeaderComponent]
         }), 
-        __metadata('design:paramtypes', [admin_service_1.AdminService, router_1.Router, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [AdminService, Router, ActivatedRoute])
     ], AdminComponent);
     return AdminComponent;
 })();
-exports.AdminComponent = AdminComponent;
+AdminComponent = AdminComponent;
 //# sourceMappingURL=admin.component.js.map

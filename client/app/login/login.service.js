@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+import { Injectable } from '@angular/core';
 var USERS = [
     {
         email: 'sumit@knoldus.com',
@@ -30,12 +30,12 @@ var LoginService = (function () {
         return false;
     };
     LoginService = __decorate([
-        core_1.Injectable(), 
+        Injectable(), 
         __metadata('design:paramtypes', [])
     ], LoginService);
     return LoginService;
 })();
-exports.LoginService = LoginService;
+LoginService = LoginService;
 //import {Injectable} from '@angular/core';
 //import {Router} from '@angular/router';
 //import {User} from '.././user/user'

@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,21 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var login_component_1 = require('./login/login.component');
-var router_1 = require('@angular/router');
-var AppComponent = (function () {
-    function AppComponent() {
-    }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: "\n     <router-outlet></router-outlet>\n    ",
-            directives: [login_component_1.LoginComponent, router_1.ROUTER_DIRECTIVES]
-        }),
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
-}());
-exports.AppComponent = AppComponent;
+import { Component, Injectable } from '@angular/core';
+import { LoginComponent } from './login/login.component';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+export let AppComponent = class AppComponent {
+};
+AppComponent = __decorate([
+    Component({
+        selector: 'my-app',
+        template: `
+     <router-outlet></router-outlet>
+    `,
+        directives: [LoginComponent, ROUTER_DIRECTIVES]
+    }),
+    Injectable(), 
+    __metadata('design:paramtypes', [])
+], AppComponent);

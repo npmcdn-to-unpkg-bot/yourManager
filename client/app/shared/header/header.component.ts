@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { Router,ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
-    moduleId:module.id,
+    //moduleId:module.id,
     selector: 'ym-header-shared',
     templateUrl:'header.component.html',
     directives:[ROUTER_DIRECTIVES],

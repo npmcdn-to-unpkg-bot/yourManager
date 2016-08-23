@@ -1,8 +1,8 @@
-var admin_component_1 = require('./admin.component');
-exports.AdminRoutes = [
+import { AdminComponent } from './admin.component';
+export var AdminRoutes = [
     {
         path: 'admin/:id',
-        component: admin_component_1.AdminComponent
+        component: AdminComponent
     },
 ];
 //# sourceMappingURL=admin.route.js.map

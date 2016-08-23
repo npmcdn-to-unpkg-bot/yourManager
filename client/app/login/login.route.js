@@ -1,5 +1,5 @@
-var login_component_1 = require('./login.component');
-exports.LoginRoutes = [
+import { LoginComponent } from './login.component';
+export var LoginRoutes = [
     {
         path: '**',
         redirectTo: '/login',
@@ -7,7 +7,7 @@ exports.LoginRoutes = [
     },
     {
         path: 'login',
-        component: login_component_1.LoginComponent
+        component: LoginComponent
     },
 ];
 //# sourceMappingURL=login.route.js.map

@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var header_component_1 = require('../shared/header/header.component');
+import { Component } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { HeaderComponent } from '../shared/header/header.component';
 var HomeComponent = (function () {
     function HomeComponent(router) {
         this.router = router;
@@ -18,15 +18,15 @@ var HomeComponent = (function () {
         this.fullpath = 'assets/images/your.jpg';
     };
     HomeComponent = __decorate([
-        core_1.Component({
+        Component({
             moduleId: module.id,
             selector: 'ym-home',
             templateUrl: 'home.component.html',
-            directives: [router_1.ROUTER_DIRECTIVES, header_component_1.HeaderComponent]
+            directives: [ROUTER_DIRECTIVES, HeaderComponent]
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [Router])
     ], HomeComponent);
     return HomeComponent;
 })();
-exports.HomeComponent = HomeComponent;
+HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map
