@@ -12,9 +12,11 @@
     "tsc:w": "tsc -w",
     "typings": "typings",
     "build": "tsc",
-    "rollup": "rollup -f iife -c -o dist/bundle.es2015.js",
-    "es5": "tsc --target es5 --allowJs dist/bundle.es2015.js --out dist/bundle.js",
-    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js",
+    "rollup": "rollup -f iife -c -o dist/prod/client/app/bundle.es2015.js",
+    "es5": "tsc --target es5 --allowJs dist/prod/client/app/bundle.es2015.js --out dist/prod/client/app/bundle.js",
+    "minify": "uglifyjs dist/prod/client/app/bundle.js --screw-ie8 --compress --mangle --output dist/prod/client/app/bundle.min.js",
+    "ngc": "ngc -p . && cp app/* compiled",
+    "clean": "rm -rf dist && rm -rf app/*.ngfactory.ts && cd compiled && ls | grep -v main-ngc.ts | xargs rm && cd ..",
     "build_prod": "npm run build && npm run rollup && npm run es5 && npm run minify"
   },
   "keywords": [
@@ -81,7 +83,7 @@
     "angular2": "^2.0.0-beta.17",
     "angular2-inline-template-style": "^0.2.0",
     "babel-core": "^6.11.4",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015": "^6.13.2",
     "browser-sync": "^2.14.0",
     "browserify": "^13.1.0",
     "concurrently": "^2.0.0",
@@ -89,6 +91,7 @@
     "gulp": "^3.9.1",
     "gulp-angular-embed-templates": "^2.3.0",
     "gulp-angular2-embed-sass": "^0.1.1",
+    "gulp-babel": "^6.1.2",
     "gulp-browserify": "^0.5.1",
     "gulp-bundle-assets": "^2.27.1",
     "gulp-cached": "^1.1.0",
@@ -136,6 +139,7 @@
     "lite-server": "^2.2.0",
     "rollup": "^0.34.10",
     "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
     "rollup-stream": "^1.11.0",
     "run-sequence": "^1.2.2",
     "stringify": "^5.1.0",
@@ -144,6 +148,8 @@
     "tsify": "^1.0.3",
     "typescript": "^1.8.10",
     "typings": "^1.0.4",
+    "uglify-js": "^2.7.3",
+    "uglifyjs": "^2.4.10",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

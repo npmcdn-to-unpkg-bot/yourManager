@@ -4,7 +4,7 @@ var gzip = require('gulp-gzip');
 var tsConfig = tsc.createProject('./client/tsconfig.json');
 var browserify = require('gulp-browserify');
 var tsify = require("tsify");
-var jsuglify = require("gulp-uglifyjs");
+var jsuglify = require("rollup-plugin-uglify");//require("rollup-plugin-uglify");
 var jsminify = require("gulp-minify");
 var minifyHtml = require("gulp-minify-html");
 var ng2Inline = require('angular2-inline-template-style');
@@ -37,7 +37,8 @@ var sourceMaps = require('gulp-sourcemaps');
 var cdnizer = require('gulp-cdnizer');
 var rollup = require('rollup-stream');
 var source = require('vinyl-source-stream');
-
+var gutil = require('gulp-util');
+var babel = require('gulp-babel');
 var lib_dev = [
     'node_modules/core-js/client/shim.min.js',
     'node_modules/zone.js/dist/zone.js',
@@ -118,11 +119,12 @@ gulp.task('ts-compile', function () {
 
 gulp.task('bundle-app',function (done) {
 
-    return gulp.src('dist/prod/client/app/*.js')
+    return gulp.src('dist/prod/client/app/app.es5.js')
         //.pipe(concat('bundle.js'))
         //.pipe(jsminify())
-        .pipe(jsuglify())
-        //.pipe(gzip())
+
+        //.pipe(jsuglify())
+
         .pipe(gulp.dest('dist/prod/client/app'));
 
 });
@@ -149,17 +151,21 @@ gulp.task('index-dev', function () {
         .pipe(gulp.dest('dist/prod/client'));
 });
 
+gulp.task('rollup...', function() {
+    return gulp.src('rollup.config.js')
 
-gulp.task('rollup', function() {
-    //return rollup({
-    //    entry: 'dist/temp/client/app/boot.js'
-    //})
-    return rollup('rollup.config.js')
-    // give the file the name you want to output with.
         .pipe(source('app.js'))
 
         // and output to ./dist/app.js as normal.
         .pipe(gulp.dest('dist/prod/client/app'));
+});
+gulp.task('rollup', function() {
+        return rollup('rollup.config.js')
+
+            .pipe(source('app.js'))
+
+            // and output to ./dist/app.js as normal.
+            .pipe(gulp.dest('dist/prod/client/app'));
 });
 
 gulp.task('es5-compile', function () {
