@@ -3,7 +3,7 @@ node_modules
 npm-debug.log
 gulpfile.js
 gulp.config.js
-client
+/client
 server
 dist/dev
 dist/temp
