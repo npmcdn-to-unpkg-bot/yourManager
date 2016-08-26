@@ -17,48 +17,44 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
-var AdminComponent = (function () {
-    function AdminComponent(adminService, router, route) {
+export let AdminComponent = class {
+    constructor(adminService, router, route) {
         this.adminService = adminService;
         this.router = router;
         this.route = route;
         this.mode = 'Observable';
         this.errorMessage = '';
     }
-    AdminComponent.prototype.ngOnInit = function () {
-        var _this = this;
+    ngOnInit() {
         this.sub = this.route
             .params
-            .subscribe(function (params) {
-            _this.selectedId = params['id'];
-            _this.listByEmpId(_this.selectedId);
+            .subscribe(params => {
+            this.selectedId = params['id'];
+            this.listByEmpId(this.selectedId);
         });
-    };
-    AdminComponent.prototype.listByEmpId = function (empId) {
-        var _this = this;
-        this.adminService.getAllocatedAssets(empId).subscribe(function (res) {
-            _this.allocatedAssetsList = res;
-        }, function (error) { return _this.errorMessage = error; });
-    };
-    AdminComponent.prototype.ngOnDestroy = function () {
+    }
+    listByEmpId(empId) {
+        this.adminService.getAllocatedAssets(empId).subscribe(res => {
+            this.allocatedAssetsList = res;
+        }, error => this.errorMessage = error);
+    }
+    ngOnDestroy() {
         this.sub.unsubscribe();
-    };
-    __decorate([
-        Input(), 
-        __metadata('design:type', Array)
-    ], AdminComponent.prototype, "allocatedAssetsList", void 0);
-    AdminComponent = __decorate([
-        Component({
-            moduleId: module.id,
-            selector: 'ym-admin',
-            templateUrl: 'admin.component.html',
-            styleUrls: ['admin.component.css'],
-            providers: [AdminService],
-            directives: [HeaderComponent]
-        }), 
-        __metadata('design:paramtypes', [AdminService, Router, ActivatedRoute])
-    ], AdminComponent);
-    return AdminComponent;
-})();
-AdminComponent = AdminComponent;
+    }
+};
+__decorate([
+    Input(), 
+    __metadata('design:type', Array)
+], AdminComponent.prototype, "allocatedAssetsList", void 0);
+AdminComponent = __decorate([
+    Component({
+        //moduleId:module.id,
+        selector: 'ym-admin',
+        templateUrl: 'admin.component.html',
+        styleUrls: ['admin.component.css'],
+        providers: [AdminService],
+        directives: [HeaderComponent]
+    }), 
+    __metadata('design:paramtypes', [AdminService, Router, ActivatedRoute])
+], AdminComponent);
 //# sourceMappingURL=admin.component.js.map

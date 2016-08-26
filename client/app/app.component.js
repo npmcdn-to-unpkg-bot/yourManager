@@ -10,19 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component, Injectable } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-var AppComponent = (function () {
-    function AppComponent() {
-    }
-    AppComponent = __decorate([
-        Component({
-            selector: 'my-app',
-            template: "\n     <router-outlet></router-outlet>\n    ",
-            directives: [LoginComponent, ROUTER_DIRECTIVES]
-        }),
-        Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
-})();
-AppComponent = AppComponent;
+export let AppComponent = class {
+};
+AppComponent = __decorate([
+    Component({
+        selector: 'my-app',
+        template: `
+     <router-outlet></router-outlet>
+    `,
+        directives: [LoginComponent, ROUTER_DIRECTIVES]
+    }),
+    Injectable(), 
+    __metadata('design:paramtypes', [])
+], AppComponent);
 //# sourceMappingURL=app.component.js.map

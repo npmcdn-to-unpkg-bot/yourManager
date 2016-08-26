@@ -1,7 +1,3 @@
-var logistics = (function () {
-    function logistics() {
-    }
-    return logistics;
-})();
-logistics = logistics;
+export class logistics {
+}
 //# sourceMappingURL=logistics.js.map

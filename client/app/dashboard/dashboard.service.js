@@ -16,12 +16,12 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
-var SearchService = (function () {
-    function SearchService(http) {
+export let SearchService = class {
+    constructor(http) {
         this.http = http;
         this.listAssetsURL = '/api/logistics/list/'; // URL to web API
     }
-    SearchService.prototype.getAllocatedAssets = function (empId) {
+    getAllocatedAssets(empId) {
         this.listAssetsURL += empId;
         //let body = JSON.stringify({ empId });
         //let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -29,24 +29,22 @@ var SearchService = (function () {
         return this.http.get(this.listAssetsURL)
             .map(this.extractData)
             .catch(this.handleError);
-    };
-    SearchService.prototype.extractData = function (res) {
-        var body = res.json();
+    }
+    extractData(res) {
+        let body = res.json();
         return body || {};
-    };
-    SearchService.prototype.handleError = function (error) {
+    }
+    handleError(error) {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
-        var errMsg = (error.message) ? error.message :
-            error.status ? error.status + " - " + error.statusText : 'Server error';
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
-    };
-    SearchService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [Http])
-    ], SearchService);
-    return SearchService;
-})();
-SearchService = SearchService;
+    }
+};
+SearchService = __decorate([
+    Injectable(), 
+    __metadata('design:paramtypes', [Http])
+], SearchService);
 //# sourceMappingURL=dashboard.service.js.map

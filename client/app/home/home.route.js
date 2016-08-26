@@ -1,5 +1,5 @@
 import { HomeComponent } from './home.component';
-export var HomeRoutes = [
+export const HomeRoutes = [
     {
         path: 'home',
         component: HomeComponent

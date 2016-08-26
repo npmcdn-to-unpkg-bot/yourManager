@@ -12,14 +12,14 @@ import { User } from '.././user/user';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
-var LoginComponent = (function () {
-    function LoginComponent(loginService, router) {
+export let LoginComponent = class {
+    constructor(loginService, router) {
         this.loginService = loginService;
         this.router = router;
         this.errorMsg = '';
         this.user = {};
     }
-    LoginComponent.prototype.login = function (user) {
+    login(user) {
         this.selectedUser = user;
         if (!this.loginService.login(this.selectedUser)) {
             this.errorMsg = 'Failed to login';
@@ -27,23 +27,21 @@ var LoginComponent = (function () {
         else {
             this.router.navigate(['/home']);
         }
-    };
-    __decorate([
-        Input(), 
-        __metadata('design:type', User)
-    ], LoginComponent.prototype, "selectedUser", void 0);
-    LoginComponent = __decorate([
-        Component({
-            moduleId: module.id,
-            selector: 'ym-login',
-            templateUrl: 'login.component.html',
-            styleUrls: ['login.component.css'],
-            providers: [LoginService],
-            directives: [HeaderComponent]
-        }), 
-        __metadata('design:paramtypes', [LoginService, Router])
-    ], LoginComponent);
-    return LoginComponent;
-})();
-LoginComponent = LoginComponent;
+    }
+};
+__decorate([
+    Input(), 
+    __metadata('design:type', User)
+], LoginComponent.prototype, "selectedUser", void 0);
+LoginComponent = __decorate([
+    Component({
+        //moduleId:module.id,
+        selector: 'ym-login',
+        templateUrl: 'login.component.html',
+        styleUrls: ['login.component.css'],
+        providers: [LoginService],
+        directives: [HeaderComponent]
+    }), 
+    __metadata('design:paramtypes', [LoginService, Router])
+], LoginComponent);
 //# sourceMappingURL=login.component.js.map

@@ -15,9 +15,9 @@
     "rollup": "rollup -f iife -c -o dist/prod/client/app/bundle.es2015.js",
     "es5": "tsc --target es5 --allowJs dist/prod/client/app/bundle.es2015.js --out dist/prod/client/app/bundle.js",
     "minify": "uglifyjs dist/prod/client/app/bundle.js --screw-ie8 --compress --mangle --output dist/prod/client/app/bundle.min.js",
-    "ngc": "ngc -p . && cp app/* compiled",
-    "clean": "rm -rf dist && rm -rf app/*.ngfactory.ts && cd compiled && ls | grep -v main-ngc.ts | xargs rm && cd ..",
-    "build_prod": "npm run build && npm run rollup && npm run es5 && npm run minify"
+    "ngc": "ngc -p . && cp client/app/* client/compiled",
+    "clean": "rm -rf dist && rm -rf client/app/*.ngfactory.ts && cd client/compiled && ls | grep -v client/boot-ngc.ts | xargs rm && cd ..",
+    "build_prod": "npm run clean && npm run ngc && npm run build && npm run rollup && npm run es5 && npm run minify"
   },
   "keywords": [
     "your",

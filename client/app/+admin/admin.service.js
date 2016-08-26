@@ -17,37 +17,35 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
-var AdminService = (function () {
-    function AdminService(http) {
+export let AdminService = class {
+    constructor(http) {
         this.http = http;
         this.listAssetsURL = '/api/logistics/list/'; // URL to web API
     }
-    AdminService.prototype.extractData = function (res) {
-        var body = res.json();
+    extractData(res) {
+        let body = res.json();
         return body || {};
-    };
-    AdminService.prototype.handleError = function (error) {
+    }
+    handleError(error) {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
-        var errMsg = (error.message) ? error.message :
-            error.status ? error.status + " - " + error.statusText : 'Server error';
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
-    };
-    AdminService.prototype.getAllocatedAssets = function (empId) {
+    }
+    getAllocatedAssets(empId) {
         this.listAssetsURL += empId;
         //let body = JSON.stringify({ empId });
-        var headers = new Headers({ 'Content-Type': 'application/json' });
-        var options = new RequestOptions({ headers: headers });
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
         return this.http.get(this.listAssetsURL)
             .map(this.extractData)
             .catch(this.handleError);
-    };
-    AdminService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [Http])
-    ], AdminService);
-    return AdminService;
-})();
-AdminService = AdminService;
+    }
+};
+AdminService = __decorate([
+    Injectable(), 
+    __metadata('design:paramtypes', [Http])
+], AdminService);
 //# sourceMappingURL=admin.service.js.map

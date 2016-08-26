@@ -1,5 +1,5 @@
 import { DashboardComponent } from './dashboard.component';
-export var DashboardRoutes = [
+export const DashboardRoutes = [
     {
         path: 'dashboard',
         component: DashboardComponent

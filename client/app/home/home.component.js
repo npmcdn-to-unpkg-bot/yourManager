@@ -10,23 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
-var HomeComponent = (function () {
-    function HomeComponent(router) {
+export let HomeComponent = class {
+    constructor(router) {
         this.router = router;
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.fullpath = 'assets/images/your.jpg';
-    };
-    HomeComponent = __decorate([
-        Component({
-            moduleId: module.id,
-            selector: 'ym-home',
-            templateUrl: 'home.component.html',
-            directives: [ROUTER_DIRECTIVES, HeaderComponent]
-        }), 
-        __metadata('design:paramtypes', [Router])
-    ], HomeComponent);
-    return HomeComponent;
-})();
-HomeComponent = HomeComponent;
+    }
+};
+HomeComponent = __decorate([
+    Component({
+        //moduleId:module.id,
+        selector: 'ym-home',
+        templateUrl: 'home.component.html',
+        directives: [ROUTER_DIRECTIVES, HeaderComponent]
+    }), 
+    __metadata('design:paramtypes', [Router])
+], HomeComponent);
 //# sourceMappingURL=home.component.js.map

@@ -5,5 +5,5 @@ import { HTTP_PROVIDERS } from '@angular/http';
 bootstrap(AppComponent, [
     appRouterProviders, HTTP_PROVIDERS
 ])
-    .catch(function (err) { return console.error(err); });
+    .catch(err => console.error(err));
 //# sourceMappingURL=boot.js.map

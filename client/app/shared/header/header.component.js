@@ -9,33 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router';
-var HeaderComponent = (function () {
-    function HeaderComponent(router) {
+export let HeaderComponent = class {
+    constructor(router) {
         this.router = router;
         this.show = true;
     }
     ;
-    HeaderComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         if (localStorage.getItem('user') === null) {
             this.show = false;
             this.router.navigate(['/login']);
         }
-    };
-    HeaderComponent.prototype.logout = function () {
+    }
+    logout() {
         localStorage.removeItem('user');
         this.router.navigate(['/login']);
-    };
-    HeaderComponent = __decorate([
-        Component({
-            moduleId: module.id,
-            selector: 'ym-header-shared',
-            templateUrl: 'header.component.html',
-            directives: [ROUTER_DIRECTIVES],
-            styleUrls: ['header.css']
-        }), 
-        __metadata('design:paramtypes', [Router])
-    ], HeaderComponent);
-    return HeaderComponent;
-})();
-HeaderComponent = HeaderComponent;
+    }
+};
+HeaderComponent = __decorate([
+    Component({
+        //moduleId:module.id,
+        selector: 'ym-header-shared',
+        templateUrl: 'header.component.html',
+        directives: [ROUTER_DIRECTIVES],
+        styleUrls: ['header.css']
+    }), 
+    __metadata('design:paramtypes', [Router])
+], HeaderComponent);
 //# sourceMappingURL=header.component.js.map

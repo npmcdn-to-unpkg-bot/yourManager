@@ -1,5 +1,5 @@
 import { LoginComponent } from './login.component';
-export var LoginRoutes = [
+export const LoginRoutes = [
     {
         path: '**',
         redirectTo: '/login',

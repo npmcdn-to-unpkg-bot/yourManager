@@ -1,5 +1,5 @@
 import { AdminComponent } from './admin.component';
-export var AdminRoutes = [
+export const AdminRoutes = [
     {
         path: 'admin/:id',
         component: AdminComponent

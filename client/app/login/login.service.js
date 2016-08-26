@@ -18,24 +18,20 @@ var USERS = [
         password: '11'
     }
 ];
-var LoginService = (function () {
-    function LoginService() {
-    }
-    LoginService.prototype.login = function (user) {
-        var authenticatedUser = USERS.find(function (u) { return u.email === user.email; });
+export let LoginService = class {
+    login(user) {
+        var authenticatedUser = USERS.find(u => u.email === user.email);
         if (authenticatedUser && authenticatedUser.password === user.password) {
             localStorage.setItem('user', JSON.stringify(authenticatedUser));
             return true;
         }
         return false;
-    };
-    LoginService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], LoginService);
-    return LoginService;
-})();
-LoginService = LoginService;
+    }
+};
+LoginService = __decorate([
+    Injectable(), 
+    __metadata('design:paramtypes', [])
+], LoginService);
 //import {Injectable} from '@angular/core';
 //import {Router} from '@angular/router';
 //import {User} from '.././user/user'

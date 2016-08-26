@@ -18,20 +18,20 @@ import 'rxjs/add/operator/toPromise';
 import { Router, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
 //import {LoginService} from '.././login/login.service'
-var DashboardComponent = (function () {
-    function DashboardComponent(searchService, router, route) {
+export let DashboardComponent = class {
+    constructor(searchService, router, route) {
         this.searchService = searchService;
         this.router = router;
         this.route = route;
         this.search = { value: '' };
     }
-    DashboardComponent.prototype.ngOnInit = function () {
+    ngOnInit() {
         this.fullpath = 'assets/images/sample.png';
-    };
-    DashboardComponent.prototype.onSubmit = function () {
+    }
+    onSubmit() {
         this.listByEmpId(this.search.value);
-    };
-    DashboardComponent.prototype.listByEmpId = function (empId) {
+    }
+    listByEmpId(empId) {
         this.router.navigate(['/admin', empId]);
         //this.searchService.getAllocatedAssets(empId).subscribe(
         //    res => {
@@ -40,18 +40,16 @@ var DashboardComponent = (function () {
         //
         //    },
         //    error =>  this.errorMessage = <any>error);
-    };
-    DashboardComponent = __decorate([
-        Component({
-            moduleId: module.id,
-            selector: 'ym-dashboard',
-            providers: [SearchService],
-            templateUrl: 'dashboard.component.html',
-            directives: [ROUTER_DIRECTIVES, HeaderComponent]
-        }), 
-        __metadata('design:paramtypes', [SearchService, Router, ActivatedRoute])
-    ], DashboardComponent);
-    return DashboardComponent;
-})();
-DashboardComponent = DashboardComponent;
+    }
+};
+DashboardComponent = __decorate([
+    Component({
+        //moduleId:module.id,
+        selector: 'ym-dashboard',
+        providers: [SearchService],
+        templateUrl: 'dashboard.component.html',
+        directives: [ROUTER_DIRECTIVES, HeaderComponent]
+    }), 
+    __metadata('design:paramtypes', [SearchService, Router, ActivatedRoute])
+], DashboardComponent);
 //# sourceMappingURL=dashboard.component.js.map
