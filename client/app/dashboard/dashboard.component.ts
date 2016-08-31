@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    moduleId:module.id,
+    //moduleId:module.id,
     selector: 'ym-dashboard',
     templateUrl:'dashboard.component.html',
 })

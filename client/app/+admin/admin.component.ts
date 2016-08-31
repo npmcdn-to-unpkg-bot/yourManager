@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
-    moduleId:module.id,
+    //moduleId:module.id,
     selector: 'ym-admin',
     templateUrl: 'admin.component.html',
     styleUrls:['admin.component.css'],

@@ -4,7 +4,7 @@ import {LoginService} from './login.service';
 import { Router } from '@angular/router';
 
 @Component({
-    moduleId:module.id,
+    //moduleId:module.id,
     selector: 'ym-login',
     templateUrl: 'login.component.html',
     styleUrls:['login.component.css'],
