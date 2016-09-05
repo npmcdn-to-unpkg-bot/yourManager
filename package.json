@@ -4,9 +4,10 @@
   "description": "",
   "boot": "./dist/boot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && concurrently \"npm run tsc:w\" \"node server/index.js\" ",
     "lite": "lite-server",
+    "lite-server-test": "lite-server --config=liteserver-test-config.json",
+    "test": "tsc && concurrently \"npm run tsc:w\" \"npm run lite-server-test\" ",
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
@@ -19,6 +20,9 @@
     "clean": "rm -rf dist && rm -rf client/app/*.ngfactory.ts && cd client/compiled && ls | grep -v client/boot-ngc.ts | xargs rm && cd ..",
     "build_prod": "npm run clean && npm run ngc && npm run build && npm run rollup && npm run es5 && npm run minify"
   },
+
+
+
   "keywords": [
     "your",
     "manager"
@@ -139,6 +143,7 @@
     "gulp-uglifyjs": "^0.6.2",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.8",
+    "jasmine-core": "2.5.0",
     "lite-server": "^2.2.0",
     "q": "^1.4.1",
     "rollup": "^0.34.10",
@@ -157,4 +162,9 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
+
+
+
+
+
 }

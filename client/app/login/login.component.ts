@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { User } from '../shared/model/user';
 import {LoginService} from './login.service';
 import { Router } from '@angular/router';
+//import {error} from "util";
 
 @Component({
     //moduleId:module.id,
@@ -11,21 +12,27 @@ import { Router } from '@angular/router';
 
 })
 
-
 export class LoginComponent {
     public errorMsg = '';
-    @Input() selectedUser:User;
+    @Input() user:User;
     user = {};
 
     constructor(private loginService: LoginService, private router: Router) {}
 
-    login(user:User) {
-        this.selectedUser = user;
+    login() {
+        this.loginService.login(this.user)
+        .then(data => {
+            if(JSON.stringify(data) !== '{}') {
+                localStorage.setItem('user', JSON.stringify(data));
+                this.router.navigate(['home']);
+            } else {
+                this.errorMsg = 'Failed to login...';
+            }
+        },
+        error => alert(error));
+    }
 
-        if(!this.loginService.login(this.selectedUser)) {
-            this.errorMsg = 'Failed to login...';
-        } else {
-            this.router.navigate(['home']);
-        }
+    goToSignup() {
+        this.router.navigate(['signup']);
     }
 }

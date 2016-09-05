@@ -35,6 +35,7 @@ export function index(req, res) {
  * Creates a new user
  */
 export function create(req, res, next) {
+    console.log(JSON.stringify(req.body));
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
@@ -43,9 +44,27 @@ export function create(req, res, next) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
-      res.json({ token });
+
+      res.json( user );
     })
     .catch(validationError(res));
+}
+
+/**
+ * Login a user
+ */
+export function signIn(req, res, next) {
+
+    //loginUser.provider = 'local';
+    //loginUser.role = 'user';
+    User.findOne({'email':req.body.email, 'password':req.body.password}).exec()
+        .then(function(user) {
+            var token = jwt.sign({ _id: user._id }, config.secrets.session, {
+                expiresIn: 60 * 60 * 5
+            });
+            res.json( user );
+        })
+        .catch(validationError(res));
 }
 
 /**

@@ -302,7 +302,8 @@ gulp.task("ts-lint", function() {
 gulp.task('copy-system-lib', function () {
     var libs = [
         "@angular",
-        "rxjs"
+        "rxjs",
+        "jasmine-core"
     ];
 
     var promises = [];
@@ -311,7 +312,7 @@ gulp.task('copy-system-lib', function () {
         var defer = Q.defer();
         var pipeline = gulp
             .src('node_modules/' + lib + '/**/*')
-            .pipe(gulp.dest('dist/dev/client/assets/system-lib/' + lib));
+            .pipe(gulp.dest('./dist/dev/client/assets/system-lib/' + lib));
 
         pipeline.on('end', function () {
             defer.resolve();
@@ -327,7 +328,7 @@ gulp.task('build-dev', function(callback) {
         //['ts-lint'],
         'ts-compile',
         [ 'copy-rootfiles', 'copy-css', 'copy-corelib', 'minify-images', 'copy-html', 'copy-server', 'copy-components'],
-        ['copy-system-lib','start-server'],
+        ['start-server'],
         'gulp-watch',
         callback);
 });
