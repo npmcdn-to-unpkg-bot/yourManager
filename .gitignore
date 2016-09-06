@@ -4,16 +4,12 @@ npm-debug.log
 gulpfile.js
 gulp.config.js
 /client
-server
 dist/dev
 dist/temp
 typings
 .yo-rc.json
 karma.conf.js
 tslint.json
-.babelrc
-.bowerrc
-package.json
 .travis.yml
 typings.json
-bower.json
+
