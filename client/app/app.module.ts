@@ -7,13 +7,16 @@ import {AppComponent} from './app.component';
 
 /*
  @Feature Modules
-**/
+ **/
 import {routing} from './app.routes';
 
 import {LoginModule} from './login/login.module';
 import {AdminModule} from './+admin/admin.module';
 import {HomeModule} from './home/home.module';
 import {SignupModule} from "./signup/signup.module";
+import {HeaderComponent} from "./shared/header/header.component";
+import {LoginComponent} from "./login/login.component";
+import {LoggedInGuard} from "./logged-in.guard";
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import {SignupModule} from "./signup/signup.module";
     routing,
     LoginModule
   ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, HeaderComponent ],
   bootstrap: [ AppComponent ],
+  providers: [LoggedInGuard]
 })
 export class AppModule { }

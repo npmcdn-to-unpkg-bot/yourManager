@@ -23,11 +23,11 @@ export class LoginComponent {
     login() {
         this.loginService.login(this.user)
         .then(data => {
-            if(JSON.stringify(data) != '{}'){
-                localStorage.setItem('user', JSON.stringify(data))
+            if(data){
                 this.router.navigate(['home'])
+            } else {
+                this.errorMsg = 'Failed to login...';
             }
-            else this.errorMsg = 'Failed to login...';
         },
         error => alert(error))
     }
@@ -35,4 +35,5 @@ export class LoginComponent {
     goToSignup() {
         this.router.navigate(['signup']);
     }
+
 }

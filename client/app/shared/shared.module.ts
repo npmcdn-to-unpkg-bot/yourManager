@@ -7,10 +7,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports:      [ CommonModule, RouterModule ],
-  declarations: [ HeaderComponent],
-  exports:      [ HeaderComponent,
-    CommonModule,
-    FormsModule ]
+  exports:      [ CommonModule, FormsModule ]
 })
 export class SharedModule { }
 

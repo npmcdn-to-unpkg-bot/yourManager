@@ -4,27 +4,16 @@ import {User} from '../shared/model/user';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-var USERS =  [
-    {
-        email:'sumit@knoldus.com',
-        password:'11'
-    },
-    {
-        email:'amit@knoldus.com',
-        password:'11'
-    },
-    {
-        email:'akshayrana@knoldus.in',
-        password:'11'
-    }
-];
 
 @Injectable()
 export class LoginService {
-    loginUrl = '/api/users/signin';
-    constructor(private http: Http) {}
+  loginUrl = '/api/users/signin';
+  public loggedIn: boolean = false;
+
+  constructor(private http: Http) {}
 
   login(user: User) {
+    console.log(this.loggedIn)
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -32,7 +21,7 @@ export class LoginService {
     return this.http
       .post(this.loginUrl, JSON.stringify(user), {headers: headers})
       .toPromise()
-      .then(this.extractData)
+      .then(res => this.extractData(res))
       .catch(this.handleError);
   }
 
@@ -44,8 +33,19 @@ export class LoginService {
   }
 
   private extractData(res: Response) {
+    console.log("======" + this.loggedIn)
     let body = res.json();
-    return body || {};
+    if(JSON.stringify(body) != '{}'){
+      localStorage.setItem('user', JSON.stringify(body));
+      this.loggedIn = true;
+      console.log("++++++" + this.loggedIn)
+      return true
+    }
+  }
+
+  isLoggedIn() {
+    console.log("-------------"+this.loggedIn);
+    return this.loggedIn;
   }
 
 }

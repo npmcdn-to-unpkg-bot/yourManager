@@ -1,11 +1,13 @@
-import { RouterConfig, Routes, RouterModule } from '@angular/router';
+import { RouterConfig, Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { HomeComponent } from './home.component';
+import {LoggedInGuard} from "../logged-in.guard";
 
 export const homeRoutes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        canActive: [ LoggedInGuard ]
     }
 ];
 
