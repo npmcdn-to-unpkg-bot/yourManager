@@ -13,16 +13,11 @@
     "tsc:w": "tsc -w",
     "typings": "typings",
     "build": "tsc",
-    "rollup": "rollup -f iife -c -o dist/prod/client/app/bundle.es2015.js",
-    "es5": "tsc --target es5 --allowJs dist/prod/client/app/bundle.es2015.js --out dist/prod/client/app/bundle.js",
-    "minify": "uglifyjs dist/prod/client/app/bundle.js --screw-ie8 --compress --mangle --output dist/prod/client/app/bundle.min.js",
-    "ngc": "ngc -p . && cp client/app/* client/compiled",
-    "clean": "rm -rf dist && rm -rf client/app/*.ngfactory.ts && cd client/compiled && ls | grep -v client/boot-ngc.ts | xargs rm && cd ..",
-    "build_prod": "npm run clean && npm run ngc && npm run build && npm run rollup && npm run es5 && npm run minify"
+    "rollup": "rollup -f iife -c -o dist/bundle.es2015.js",
+    "es5": "tsc --target es5 --allowJs dist/bundle.es2015.js --out dist/bundle.js",
+    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js",
+    "build_prod": "npm run build && npm run rollup && npm run es5 && npm run minify"
   },
-
-
-
   "keywords": [
     "your",
     "manager"
