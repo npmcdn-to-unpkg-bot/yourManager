@@ -11,8 +11,10 @@ export class HomeComponent implements OnInit {
 
     constructor(private router: Router) {}
     public fullpath:string;
+    show: boolean;
 
     ngOnInit() {
+        this.show = true;
         this.fullpath = 'assets/images/your.jpg';
     }
 

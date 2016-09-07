@@ -4,15 +4,14 @@ import { LoginService } from './login/login.service';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService:LoginService, private router:Router) {
+  }
 
   canActivate() {
-    console.log("calledddddddd :|")
-
-    if(this.loginService.isLoggedIn()){
-      return true;
+    if(localStorage.getItem('user') === null) {
+      return true
     }
-    this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
     return false;
   }
 }

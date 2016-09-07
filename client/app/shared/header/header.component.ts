@@ -9,28 +9,22 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent implements OnInit {
-  show:boolean = true;
+  show: boolean = true;
 
   constructor(private router:Router) {
   };
 
   ngOnInit() {
-    if (localStorage.getItem('user') === null) {
-      if (this.router.url != '/signup') {
+    if(localStorage.getItem('user') === null) {
         this.show = false;
-        this.router.navigate(['login']);
-      } else {
-        this.show = false;
-      }
     } else {
-      if (this.router.url === '/login' || this.router.url === '/signup') {
-        this.router.navigate(['home'])
-      }
+      this.show = true;
     }
   }
 
   logout() {
     localStorage.removeItem('user');
+    this.show = false;
     this.router.navigate(['/login']);
   }
 }

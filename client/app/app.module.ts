@@ -16,6 +16,7 @@ import {HomeModule} from './home/home.module';
 import {SignupModule} from "./signup/signup.module";
 import {HeaderComponent} from "./shared/header/header.component";
 import {LoginComponent} from "./login/login.component";
+import {LoginGuard} from "./login.guard";
 import {LoggedInGuard} from "./logged-in.guard";
 
 
@@ -27,6 +28,6 @@ import {LoggedInGuard} from "./logged-in.guard";
   ],
   declarations: [ AppComponent, HeaderComponent ],
   bootstrap: [ AppComponent ],
-  providers: [LoggedInGuard]
+  providers: [LoginGuard, LoggedInGuard]
 })
 export class AppModule { }

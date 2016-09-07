@@ -8,12 +8,10 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class LoginService {
   loginUrl = '/api/users/signin';
-  public loggedIn: boolean = false;
 
   constructor(private http: Http) {}
 
   login(user: User) {
-    console.log(this.loggedIn)
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -21,7 +19,7 @@ export class LoginService {
     return this.http
       .post(this.loginUrl, JSON.stringify(user), {headers: headers})
       .toPromise()
-      .then(res => this.extractData(res))
+      .then(this.extractData)
       .catch(this.handleError);
   }
 
@@ -33,19 +31,11 @@ export class LoginService {
   }
 
   private extractData(res: Response) {
-    console.log("======" + this.loggedIn)
     let body = res.json();
     if(JSON.stringify(body) != '{}'){
       localStorage.setItem('user', JSON.stringify(body));
-      this.loggedIn = true;
-      console.log("++++++" + this.loggedIn)
       return true
     }
-  }
-
-  isLoggedIn() {
-    console.log("-------------"+this.loggedIn);
-    return this.loggedIn;
   }
 
 }
