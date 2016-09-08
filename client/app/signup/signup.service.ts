@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Injectable} from '@angular/core';
 import {Response} from "angular2/http";
+import { Observable }     from 'rxjs/Observable';
 
 
 @Injectable()
@@ -13,15 +14,14 @@ export class SignupService {
   constructor(private http:Http) {
   }
 
-  signup(user:User) {
+  signup(user:User):Observable<JSON> {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
 
     return this.http
       .post(this.postUrl, JSON.stringify(user), {headers: headers})
-      .toPromise()
-      .then(this.extractData)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -34,7 +34,7 @@ export class SignupService {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Promise.reject(errMsg);
+    return Observable.throw(errMsg);
   }
 
 }

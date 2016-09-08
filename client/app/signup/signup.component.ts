@@ -21,7 +21,7 @@ export class SignupComponent {
 
   signup(selectedUser:User) {
     this.signupService.signup(selectedUser)
-      .then(data => {
+      .subscribe(data => {
           localStorage.setItem('user', JSON.stringify(data));
           this.router.navigate(['home']);
         },

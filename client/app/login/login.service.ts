@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {User} from '../shared/model/user';
 import { Headers, Http, Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -11,15 +12,14 @@ export class LoginService {
 
   constructor(private http: Http) {}
 
-  login(user: User) {
+  login(user: User): Observable<Boolean> {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
 
     return this.http
       .post(this.loginUrl, JSON.stringify(user), {headers: headers})
-      .toPromise()
-      .then(this.extractData)
+      .map(this.extractData)
       .catch(this.handleError);
   }
 
@@ -27,7 +27,7 @@ export class LoginService {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg);
-    return Promise.reject(errMsg);
+    return Observable.throw(errMsg);
   }
 
   private extractData(res: Response) {
@@ -35,6 +35,8 @@ export class LoginService {
     if(JSON.stringify(body) != '{}'){
       localStorage.setItem('user', JSON.stringify(body));
       return true
+    } else {
+      return false
     }
   }
 

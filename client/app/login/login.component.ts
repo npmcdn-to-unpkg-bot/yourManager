@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { User } from '../shared/model/user';
 import {LoginService} from './login.service';
 import { Router } from '@angular/router';
-import {error} from "util";
 
 @Component({
     moduleId:module.id,
@@ -22,7 +21,7 @@ export class LoginComponent {
 
     login() {
         this.loginService.login(this.user)
-        .then(data => {
+        .subscribe(data => {
             if(data){
                 this.router.navigate(['home'])
             } else {

@@ -1,5 +1,5 @@
 <ym-header-shared></ym-header-shared>
-<div class="container" >
+<div class="container">
     <div class="title">
         Login
     </div>
@@ -23,13 +23,15 @@
         <span>{{errorMsg}}</span>
 
         <div class="row">
-            <div class="col-sm-2">
-                <button class="btn waves-effect waves-light signup-button" (click)="goToSignup()">Sign Up</button>
-            </div>
-            <div class="col-sm-2 col-sm-offset-8">
+            <div class="col-sm-2 col-sm-offset-7">
                 <button (click)="login()"
                         class="btn waves-effect waves-light login-button"
-                        type="submit" name="action">Login</button>
+                        type="submit" name="action">Login
+                </button>
+            </div>
+            <div class="col-sm-2 col-sm-offset-1">
+                <button class="btn waves-effect waves-light signup-button" (click)="goToSignup()">Sign Up</button>
+
             </div>
         </div>
     </div>
